@@ -72,8 +72,13 @@ public class ScenarioSearcherController extends AbstractSearchController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
 
+        //NPE possible
+        if (mav == null) {
+            return null;
+        }
+
+        try {
             List<Scenario> scenarioResults = scenarioDao.getScenarioSearchResults
                     (requests, personDao.getLoggedPerson().getPersonId());
             mav.addObject("scenarioResults", scenarioResults);

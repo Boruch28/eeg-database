@@ -254,7 +254,7 @@ public class ExperimentDownloadProvider {
 
         Set<DataFile> newFiles = new HashSet<DataFile>();
         // prepared files for generator
-        if (files != null || params != null) {
+        if (files != null) {
             // list selected files and prepare new files which we use for generated zip file.
             for (DataFile item : files) {
                 // fill new file from selected file
@@ -269,10 +269,12 @@ public class ExperimentDownloadProvider {
                 // create list of parameters which we use for generated zip file
                 Set<FileMetadataParamVal> newVals = new HashSet<FileMetadataParamVal>();
                 // get from map of selected parameters collection for actual file
-                Set<FileMetadataParamVal> list = params.get(item.getDataFileId());
-                if (list != null) {
-                    for (FileMetadataParamVal paramVal : list) {
-                        newVals.add(paramVal);
+                if (params != null) {
+                    Set<FileMetadataParamVal> list = params.get(item.getDataFileId());
+                    if (list != null) {
+                        for (FileMetadataParamVal paramVal : list) {
+                            newVals.add(paramVal);
+                        }
                     }
                 }
 

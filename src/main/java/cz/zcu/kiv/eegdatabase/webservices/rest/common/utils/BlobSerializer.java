@@ -3,6 +3,7 @@ package cz.zcu.kiv.eegdatabase.webservices.rest.common.utils;
 
 
 import java.sql.Blob;
+import java.util.Arrays;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import org.hibernate.Hibernate;
 
@@ -21,6 +22,6 @@ public class BlobSerializer extends XmlAdapter<String, Blob> {
 		if (v == null) {
 			return "";
 		}
-		return v.getBytes(1l, (int) v.length()).toString();
-	}
+        return Arrays.toString(v.getBytes(1l, (int) v.length()));
+    }
 }

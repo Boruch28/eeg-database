@@ -92,10 +92,11 @@ public class PojoIndexer extends Indexer {
             log.error(e);
         }
 
-        for(String key : documentFields.keySet()) {
-            document.addField(key, documentFields.get(key));
+        if (documentFields != null) {
+            for (String key : documentFields.keySet()) {
+                document.addField(key, documentFields.get(key));
+            }
         }
-
 
         // pote projit vsechny kolekce, pro kazdy objekt kolekce najit @SolrField anotace u jeho fieldu
         // a jeho @SolrId pro sparovani polozek v multivalued listu rodicovskeho dokumentu

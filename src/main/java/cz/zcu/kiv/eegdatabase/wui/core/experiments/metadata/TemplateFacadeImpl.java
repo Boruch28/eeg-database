@@ -154,6 +154,8 @@ public class TemplateFacadeImpl implements TemplateFacade {
             }
         } catch (IOException e) {
             log.error(e.getMessage(), e);
+        } catch (NullPointerException e) {
+            log.error(e.getMessage(), e);
         }
 
         final List<Section> sections = new ArrayList<Section>();

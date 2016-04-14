@@ -146,13 +146,15 @@ public class ZipGenerator implements Generator {
             return tempZipFile;
 
         } finally {
-
-            zipOutputStream.flush();
-            zipOutputStream.close();
-            fileOutputStream.flush();
-            fileOutputStream.close();
+            if (zipOutputStream != null) {
+                zipOutputStream.flush();
+                zipOutputStream.close();
+            }
+            if (fileOutputStream != null) {
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            }
             fileCounter = 0;
-
         }
     }
 
